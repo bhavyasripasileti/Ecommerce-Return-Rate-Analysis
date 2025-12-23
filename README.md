@@ -101,8 +101,6 @@ Ecommerce-Return-Rate-Analysis
 
 │ ├── ecommerce_return_rate_analysis.ipynb
 
-│ └── README.md
-
 │
 
 ├── dashboard/
