@@ -82,20 +82,35 @@ An interactive dashboard was created using Tableau Public to visualize the insig
 ---
 
 ## 📁 Repository Structure
+
 Ecommerce-Return-Rate-Analysis
+
 │
+
 ├── data/
+
 │ ├── superstore.csv
+
 │ ├── cleaned_superstore.csv
+
 │ └── high_risk_orders.csv
+
 │
+
 ├── notebook/
+
 │ ├── ecommerce_return_rate_analysis.ipynb
+
 │ └── README.md
+
 │
+
 ├── dashboard/
+
 │ └── tableau_dashboard_link.txt
+
 │
+
 └── README.md
 
 
