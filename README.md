@@ -77,7 +77,7 @@ A return flag was logically derived:
 An interactive dashboard was created using Tableau Public to visualize the insights.
 
 📌 **Dashboard Link:**  
-`https://public.tableau.com/app/profile/bhavya.sri.pasileti/viz/EcommerceReturnRateAnalysis/E-CommerceReturnRateReductionAnalysis?publish=yes`
+https://public.tableau.com/app/profile/bhavya.sri.pasileti/viz/EcommerceReturnRateAnalysis/E-CommerceReturnRateReductionAnalysis?publish=yes
 
 ---
 
