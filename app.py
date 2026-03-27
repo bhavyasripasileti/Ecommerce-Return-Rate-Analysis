@@ -1,7 +1,9 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 from sklearn.linear_model import LogisticRegression
+
 
 st.set_page_config(page_title="Return Rate Dashboard", layout="wide")
 
@@ -55,27 +57,43 @@ st.plotly_chart(fig)
 # -----------------------
 st.subheader("💸 Discount vs Profit")
 
-# Create readable labels
+
+# Create labels
 df['Return_Label'] = df['Return'].map({0: "Not Returned", 1: "Returned"})
 
-# Handle small dataset safely
+# Sample data
 sample_df = df.sample(min(1500, len(df)), random_state=42)
 
-fig2 = px.scatter(
-    sample_df,
-    x="Discount",
-    y="Profit",
-    color="Return_Label",
-    opacity=0.5,
-    title="Discount vs Profit (Return Behavior)"
-)
+# Split data manually (THIS AVOIDS WEBGL)
+returned = sample_df[sample_df['Return_Label'] == "Returned"]
+not_returned = sample_df[sample_df['Return_Label'] == "Not Returned"]
+
+fig2 = go.Figure()
+
+# Add traces 
+fig2.add_trace(go.Scatter(
+    x=not_returned['Discount'],
+    y=not_returned['Profit'],
+    mode='markers',
+    name='Not Returned',
+    opacity=0.5
+))
+
+fig2.add_trace(go.Scatter(
+    x=returned['Discount'],
+    y=returned['Profit'],
+    mode='markers',
+    name='Returned',
+    opacity=0.5
+))
 
 fig2.update_layout(
+    title="Discount vs Profit (Return Behavior)",
     template="plotly_dark",
-    height=500
+    height=500,
+    xaxis_title="Discount",
+    yaxis_title="Profit"
 )
-
-fig2.update_traces(mode='markers')
 
 st.plotly_chart(fig2, use_container_width=True)
 
