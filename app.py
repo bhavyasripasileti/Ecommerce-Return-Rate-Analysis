@@ -21,7 +21,11 @@ st.title("📊 E-Commerce Return Rate Dashboard")
 # -----------------------
 # Load Data
 # -----------------------
-df = pd.read_csv("data/cleaned_superstore.csv")
+@st.cache_data
+def load_data():
+    return pd.read_csv("data/cleaned_superstore.csv")
+
+df = load_data()
 
 # Create Return Column
 df['Return'] = df['Profit'].apply(lambda x: 1 if x < 0 else 0)
