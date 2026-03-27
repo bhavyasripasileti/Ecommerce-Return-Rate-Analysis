@@ -121,11 +121,8 @@ fig2.update_layout(
 
 st.plotly_chart(fig2, use_container_width=True)
 
-# -----------------------
-# ML Prediction
-# -----------------------
-st.subheader("🤖 Predict Return")
 
+# ------------------ ML MODEL ------------------
 features = ['Sales', 'Quantity', 'Discount']
 X = df[features]
 y = df['Return']
@@ -133,10 +130,38 @@ y = df['Return']
 model = LogisticRegression()
 model.fit(X, y)
 
-sales = st.number_input("Sales", 0.0, 10000.0, 100.0)
-quantity = st.slider("Quantity", 1, 10, 2)
-discount = st.slider("Discount", 0.0, 1.0, 0.2)
+df['Risk'] = model.predict_proba(X)[:, 1]
+
+# ------------------ HIGH RISK ------------------
+st.markdown("## ⚠️ High Risk Orders")
+
+threshold = st.slider("Risk Threshold", 0.0, 1.0, 0.6)
+
+high_risk = df[df['Risk'] > threshold]
+
+st.dataframe(high_risk.head(20), use_container_width=True)
+
+st.download_button(
+    "📥 Download High Risk Orders",
+    high_risk.to_csv(index=False),
+    file_name="high_risk_orders.csv"
+)
+
+st.markdown("---")
+
+# ------------------ PREDICTOR ------------------
+st.markdown("## 🤖 Return Risk Predictor")
+
+col1, col2, col3 = st.columns(3)
+
+sales = col1.number_input("Sales", 0.0, 10000.0, 100.0)
+quantity = col2.slider("Quantity", 1, 10, 2)
+discount = col3.slider("Discount", 0.0, 1.0, 0.2)
 
 if st.button("Predict"):
     pred = model.predict_proba([[sales, quantity, discount]])[0][1]
-    st.success(f"Return Probability: {pred:.2%}")
+
+    if pred > 0.6:
+        st.error(f"⚠️ High Return Risk: {pred:.2%}")
+    else:
+        st.success(f"✅ Low Return Risk: {pred:.2%}")
