@@ -8,12 +8,13 @@ st.set_page_config(page_title="Return Rate Dashboard", layout="wide")
 # custom styling
 st.markdown("""
     <style>
-    .main {
+    .stApp {
         background-color: #0E1117;
         color: white;
     }
     </style>
 """, unsafe_allow_html=True)
+
 
 st.title("📊 E-Commerce Return Rate Dashboard")
 
