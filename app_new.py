@@ -65,24 +65,46 @@ st.markdown("---")
 # ------------------ DISCOUNT ANALYSIS ------------------
 st.markdown("## 💸 Discount vs Return")
 
+# Create labels
 df['Return_Label'] = df['Return'].map({0: "Not Returned", 1: "Returned"})
 
+# Sample data
 sample_df = df.sample(min(1500, len(df)), random_state=42)
 
-fig2 = px.scatter(
-    sample_df,
-    x="Discount",
-    y="Profit",
-    color="Return_Label",
-    opacity=0.5
+# Split data manually (THIS AVOIDS WEBGL)
+returned = sample_df[sample_df['Return_Label'] == "Returned"]
+not_returned = sample_df[sample_df['Return_Label'] == "Not Returned"]
+
+fig2 = go.Figure()
+
+# Add traces 
+fig2.add_trace(go.Scatter(
+    x=not_returned['Discount'],
+    y=not_returned['Profit'],
+    mode='markers',
+    name='Not Returned',
+    opacity=0.5,
+    marker=dict(color='cyan')
+))
+
+fig2.add_trace(go.Scatter(
+    x=returned['Discount'],
+    y=returned['Profit'],
+    mode='markers',
+    name='Returned',
+    opacity=0.5,
+    marker=dict(color='red')
+))
+
+fig2.update_layout(
+    title="Discount vs Profit (Return Behavior)",
+    template="plotly_dark",
+    height=500,
+    xaxis_title="Discount",
+    yaxis_title="Profit"
 )
-fig2.update_layout(template="plotly_dark")
 
 st.plotly_chart(fig2, use_container_width=True)
-
-st.info("📌 Higher discounts increase return probability significantly.")
-
-st.markdown("---")
 
 # ------------------ ML MODEL ------------------
 features = ['Sales', 'Quantity', 'Discount']
