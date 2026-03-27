@@ -17,9 +17,16 @@
 
 <br/>
 
-**[🚀 Dashboard](https://ecommerce-return-rate-analysis-j3n535u5nsh6nczbuhvkwk.streamlit.app) · [📊 Workflow](#-project-workflow) · [📦 Setup](#-getting-started) · [✨ Features](#-key-features)**
+**[Live Demo](#-live-demo) · [📊 Workflow](#-project-workflow) · [📦 Setup](#-getting-started) · [✨ Features](#-key-features)**
 
 </div>
+
+---
+
+## 🌐 Live App
+
+> 🔗 **[Click here to explore the dashboard »](https://ecommerce-sales-analysis-cyqc3pcyncscatnogyfxzw.streamlit.app)**
+
 
 ---
 
