@@ -1,124 +1,241 @@
-# E-Commerce Return Rate Reduction Analysis
+<div align="center">
 
-## 📌 Project Overview
-This project focuses on analyzing e-commerce sales data to understand return patterns and identify high-risk products that are more likely to be returned. Using data analysis, basic machine learning, and an interactive Tableau dashboard, the project provides actionable insights to help reduce return rates and improve business decision-making.
+# 📦 E-Commerce Return Rate Reduction Analysis
 
-This project was completed as part of an **Industry Internship at Elevate Labs**.
+### Identify high-risk orders, reduce returns, and optimize business decisions using data & AI.
+
+[![Python](https://img.shields.io/badge/Python-3.9+-3776AB?style=for-the-badge\&logo=python\&logoColor=white)](https://python.org)
+[![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-FF4B4B?style=for-the-badge\&logo=streamlit\&logoColor=white)](https://streamlit.io)
+[![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-ML-F7931E?style=for-the-badge\&logo=scikit-learn\&logoColor=white)](https://scikit-learn.org)
+[![Tableau](https://img.shields.io/badge/Tableau-Visualization-E97627?style=for-the-badge\&logo=tableau\&logoColor=white)](https://tableau.com)
+[![Pandas](https://img.shields.io/badge/Pandas-Data--Analysis-150458?style=for-the-badge\&logo=pandas\&logoColor=white)](https://pandas.pydata.org)
+[![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
+
+<br/>
+
+> An end-to-end **data analytics & machine learning project** that analyzes e-commerce return behavior, identifies high-risk products, and provides actionable insights through interactive dashboards.
+
+<br/>
+
+**[🚀 Dashboard](#-dashboard) · [📊 Workflow](#-project-workflow) · [📦 Setup](#-getting-started) · [✨ Features](#-key-features)**
+
+</div>
 
 ---
 
-## 🎯 Objectives
-- Analyze historical e-commerce order data to identify return trends
-- Understand the impact of discounts on return behavior
-- Identify categories and sub-categories with high return rates
-- Predict high-risk orders using a machine learning model
-- Visualize insights using an interactive Tableau dashboard
+## 🌐 Overview
+
+E-commerce businesses often face significant losses due to high return rates.
+
+This project analyzes order data to **identify return patterns, understand influencing factors (like discounts), and predict high-risk orders** using machine learning.
+
+It combines **EDA + ML + Dashboarding (Streamlit & Tableau)** to deliver a complete decision-support system.
+
+---
+
+## ✨ Key Features
+
+| Feature                     | Description                                        |
+| --------------------------- | -------------------------------------------------- |
+| 📊 Data Analysis            | Explore return trends across categories & products |
+| 🩺 Return Pattern Detection | Identify high-return segments                      |
+| 🤖 ML Prediction            | Logistic Regression model to predict return risk   |
+| 📉 Discount Impact Analysis | Understand how discounts affect returns            |
+| 📦 High-Risk Identification | Flag orders with >60% return probability           |
+| 🖥️ Interactive Dashboards  | Streamlit + Tableau visualizations                 |
 
 ---
 
 ## 📊 Dataset Description
-- **Source:** Superstore-style E-commerce Dataset
-- **Format:** CSV
-- **Records:** ~10,000 orders
-- **Key Features:**
-  - Order ID, Order Date, Ship Mode
-  - Category, Sub-Category, Product Name
-  - Sales, Quantity, Discount, Profit
 
-A return flag was logically derived:
-- Orders with **negative profit** were treated as returned/problematic orders.
+* **Source:** Superstore-style E-commerce dataset
+* **Records:** ~10,000 orders
+* **Format:** CSV
 
----
+### Key Features:
 
-## 🛠️ Tools & Technologies Used
-- **Python (Google Colab)**
-  - Pandas, NumPy
-  - Scikit-learn
-- **Machine Learning**
-  - Logistic Regression (Return Risk Prediction)
-- **Visualization**
-  - Tableau Public
-- **Version Control**
-  - GitHub
+* Order ID, Order Date, Ship Mode
+* Category, Sub-Category, Product Name
+* Sales, Quantity, Discount, Profit
+
+### 📌 Return Logic:
+
+* Orders with **negative profit → classified as returned/problematic**
 
 ---
 
-## 🔄 Project Workflow
-1. **Data Loading & Cleaning**
-   - Handled encoding issues
-   - Removed missing values
-   - Created a return indicator using profit values
+## ⚙️ Project Workflow
 
-2. **Exploratory Data Analysis (EDA)**
-   - Return rate analysis by category and sub-category
-   - Discount vs return behavior analysis
+```
+Data Collection → Data Cleaning → EDA → Feature Engineering
+        │
+        ▼
+Machine Learning (Logistic Regression)
+        │
+        ▼
+Return Risk Prediction
+        │
+        ▼
+Visualization (Streamlit + Tableau Dashboards)
+```
 
-3. **Machine Learning Model**
-   - Built a Logistic Regression model
-   - Predicted return probability for each order
-   - Identified high-risk orders (Return Probability > 60%)
+### 🔄 Detailed Steps
 
-4. **Dashboard Creation**
-   - Designed an interactive Tableau dashboard
-   - Visualized KPIs, trends, and high-risk product groups
+1. **Data Cleaning**
+
+   * Handled missing values and inconsistencies
+   * Created return indicator
+
+2. **Exploratory Data Analysis**
+
+   * Category-wise return trends
+   * Discount vs return behavior
+
+3. **Model Building**
+
+   * Logistic Regression classifier
+   * Predicted return probability
+
+4. **Risk Classification**
+
+   * High-risk orders: Probability > 60%
+
+5. **Dashboard Development**
+
+   * Streamlit dashboard (interactive analytics)
+   * Tableau dashboard (business insights)
 
 ---
 
 ## 📈 Key Insights
-- Overall return rate is approximately **18–19%**
-- **Furniture and Office Supplies** show higher return rates
-- Higher discount levels significantly increase return probability
-- Certain sub-categories consistently exhibit high return risk
-- High-risk products were identified with return probability above 60%
+
+* 📌 Overall return rate: **~18–19%**
+* 🪑 Furniture & Office Supplies have higher return rates
+* 💸 Higher discounts → higher return probability
+* 📦 Certain sub-categories consistently show high return risk
+* ⚠️ High-risk orders identified using ML model
 
 ---
 
-## 📊 Tableau Dashboard
-An interactive dashboard was created using Tableau Public to visualize the insights.
+## 🖥️ Dashboard
 
-📌 **Dashboard Link:**  
-https://public.tableau.com/app/profile/bhavya.sri.pasileti/viz/EcommerceReturnRateAnalysis/E-CommerceReturnRateReductionAnalysis?publish=yes
+### 📊 Tableau Dashboard
+
+🔗 https://public.tableau.com/app/profile/bhavya.sri.pasileti/viz/EcommerceReturnRateAnalysis/E-CommerceReturnRateReductionAnalysis?publish=yes
+
+### 🚀 Streamlit Dashboard
+
+> Interactive app for real-time analysis and prediction
+
+Run locally:
+
+```bash
+streamlit run app.py
+```
 
 ---
 
-## 📁 Repository Structure
+## 📂 Project Structure
 
-Ecommerce-Return-Rate-Analysis
-
+```
+Ecommerce-Return-Rate-Analysis/
 │
-
 ├── data/
-
-│ ├── superstore.csv
-
-│ ├── cleaned_superstore.csv
-
-│ └── high_risk_orders.csv
-
+│   ├── superstore.csv
+│   ├── cleaned_superstore.csv
+│   └── high_risk_orders.csv
 │
-
 ├── notebook/
-
-│ ├── ecommerce_return_rate_analysis.ipynb
-
+│   └── ecommerce_return_rate_analysis.ipynb
 │
-
 ├── dashboard/
-
-│ └── tableau_dashboard_link.txt
-
+│   ├── app.py                # Streamlit dashboard
+│   └── tableau_dashboard_link.txt
 │
-
+├── model/
+│   └── return_model.pkl      # Trained ML model
+│
+├── requirements.txt
 └── README.md
-
+```
 
 ---
 
-## ✅ Conclusion
-This project demonstrates an end-to-end data analytics workflow, from raw data processing to actionable insights and dashboard deployment. The results can help businesses proactively identify risky products, optimize discount strategies, and reduce return-related losses.
+## 🛠️ Tech Stack
+
+| Category         | Technology                         |
+| ---------------- | ---------------------------------- |
+| Language         | Python                             |
+| Data Processing  | Pandas, NumPy                      |
+| Machine Learning | Scikit-learn (Logistic Regression) |
+| Visualization    | Streamlit, Tableau                 |
+| Notebook         | Google Colab                       |
+| Version Control  | GitHub                             |
+
+---
+
+## 🚀 Getting Started
+
+### 1️⃣ Clone Repository
+
+```bash
+git clone https://github.com/your-username/Ecommerce-Return-Rate-Analysis.git
+cd Ecommerce-Return-Rate-Analysis
+```
+
+### 2️⃣ Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3️⃣ Run Streamlit App
+
+```bash
+streamlit run dashboard/app.py
+```
+
+---
+
+## 🔮 Future Improvements
+
+* Advanced models (Random Forest, XGBoost)
+* Real-time return prediction API
+* Integration with e-commerce platforms
+* Customer behavior analysis
+* Automated retraining pipeline
+
+---
+
+## 💼 Project Highlights
+
+* Built a complete **end-to-end data analytics pipeline**
+* Combined **EDA + ML + dashboarding**
+* Developed **real-world business use case solution**
+* Implemented **risk prediction using Logistic Regression**
+* Delivered insights via **interactive dashboards**
+
+---
+
+## 📜 License
+
+MIT License — free to use and modify.
 
 ---
 
 ## 👤 Author
-**Bhavya Sri Pasileti**   
-Data Analyst Intern – Elevate Labs  
+
+**Bhavya Sri Pasileti**
+
+> Data Science & AI Enthusiast
+> Passionate about solving real-world problems using data.
+
+---
+
+<div align="center">
+
+⭐ If you found this project useful, give it a star!
+
+*Built with ❤️ by Bhavya Sri Pasileti*
+
+</div>
