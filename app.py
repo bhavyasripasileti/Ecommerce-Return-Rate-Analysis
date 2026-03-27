@@ -29,32 +29,54 @@ def load_data():
 
 df = load_data()
 
+# side bar 
+
+st.sidebar.title("🔎 Filters")
+
+category_filter = st.sidebar.multiselect(
+    "Select Category",
+    options=df['Category'].unique(),
+    default=df['Category'].unique()
+)
+
+df = df[df['Category'].isin(category_filter)]
+
 # Create Return Column
 df['Return'] = df['Profit'].apply(lambda x: 1 if x < 0 else 0)
 
-# -----------------------
 # KPIs
-# -----------------------
-total_orders = len(df)
-return_rate = df['Return'].mean() * 100
 
-col1, col2 = st.columns(2)
-col1.metric("Total Orders", total_orders)
-col2.metric("Return Rate (%)", f"{return_rate:.2f}")
+col1, col2, col3 = st.columns(3)
 
-# -----------------------
+col1.markdown("### 📦 Total Orders")
+col1.markdown(f"<h2 style='color:#00C4FF'>{len(df)}</h2>", unsafe_allow_html=True)
+
+col2.markdown("### 🔁 Return Rate")
+col2.markdown(f"<h2 style='color:#FF4B4B'>{df['Return'].mean()*100:.2f}%</h2>", unsafe_allow_html=True)
+
+col3.markdown("### 💰 Total Sales")
+col3.markdown(f"<h2 style='color:#00FF9C'>${df['Sales'].sum():,.0f}</h2>", unsafe_allow_html=True)
+
 # Category Analysis
-# -----------------------
-st.subheader("📦 Returns by Category")
+
+st.markdown("## 📦 Returns by Category")
 
 cat = df.groupby("Category")['Return'].mean().reset_index()
 
-fig = px.bar(cat, x="Category", y="Return", color="Category")
-st.plotly_chart(fig)
+fig = px.bar(
+    cat,
+    x="Category",
+    y="Return",
+    color="Category",
+    text_auto=True
+)
 
-# -----------------------
+fig.update_layout(template="plotly_dark", height=400)
+
+st.plotly_chart(fig, use_container_width=True)
+
 # Discount Analysis
-# -----------------------
+
 st.subheader("💸 Discount vs Profit")
 
 
