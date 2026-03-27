@@ -55,8 +55,29 @@ st.plotly_chart(fig)
 # -----------------------
 st.subheader("💸 Discount vs Profit")
 
-fig2 = px.scatter(df, x="Discount", y="Profit", color="Return")
-st.plotly_chart(fig2)
+# Create readable labels
+df['Return_Label'] = df['Return'].map({0: "Not Returned", 1: "Returned"})
+
+# Handle small dataset safely
+sample_df = df.sample(min(1500, len(df)), random_state=42)
+
+fig2 = px.scatter(
+    sample_df,
+    x="Discount",
+    y="Profit",
+    color="Return_Label",
+    opacity=0.5,
+    title="Discount vs Profit (Return Behavior)"
+)
+
+fig2.update_layout(
+    template="plotly_dark",
+    height=500
+)
+
+fig2.update_traces(mode='markers')
+
+st.plotly_chart(fig2, use_container_width=True)
 
 # -----------------------
 # ML Prediction
