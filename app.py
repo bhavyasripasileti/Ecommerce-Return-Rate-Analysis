@@ -76,7 +76,8 @@ fig2.add_trace(go.Scatter(
     y=not_returned['Profit'],
     mode='markers',
     name='Not Returned',
-    opacity=0.5
+    opacity=0.5,
+    marker=dict(color='cyan')
 ))
 
 fig2.add_trace(go.Scatter(
@@ -84,7 +85,8 @@ fig2.add_trace(go.Scatter(
     y=returned['Profit'],
     mode='markers',
     name='Returned',
-    opacity=0.5
+    opacity=0.5,
+    marker=dict(color='red')
 ))
 
 fig2.update_layout(
